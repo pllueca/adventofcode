@@ -1,25 +1,23 @@
 """ https://adventofcode.com/2020/day/6 """
 
 
-def count_yes_answers(group_awnsers: str) -> int:
+def count_yes_answers(group_answers: str) -> int:
     answers = set()
-    for person_answer in group_awnsers.split("\n"):
+    for person_answer in group_answers.split("\n"):
         answers.update([q for q in person_answer])
     return len(answers)
 
 
-def count_everyone_yes_answer(group_awnsers: str) -> int:
+def count_everyone_yes_answer(group_answers: str) -> int:
     # first answer
-    answers = set(group_awnsers.split("\n")[0])
+    answers = set(group_answers.split("\n")[0])
 
     # for each other answer, keep in `answers` only the present ones
-    for other_answer in group_awnsers.split("\n")[1:]:
+    for other_answer in group_answers.split("\n")[1:]:
         # if we discarted all we dont need to continue
         if not answers:
             break
-        for c in list(answers):
-            if c not in other_answer:
-                answers.remove(c)
+        answers = answers.intersection(set(other_answer))
     return len(answers)
 
 
