@@ -17,7 +17,7 @@ def count_everyone_yes_answer(group_answers: str) -> int:
         # if we discarted all we dont need to continue
         if not answers:
             break
-        answers = answers.intersection(set(other_answer))
+        answers = answers & set(other_answer)
     return len(answers)
 
 
