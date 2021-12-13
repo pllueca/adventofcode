@@ -46,7 +46,7 @@ def count_minimum_fuel_incr(crabs: List[int]) -> int:
         for x_pos, ncrabs in crabs_py_pos.items():
             # moving 1 costs 1, moving 2 costs 3 (1+2), moving 3 costs 6(1+2+3)
             n = abs(x - x_pos)
-            movement_cost = (n * (n + 1) / 2)
+            movement_cost = n * (n + 1) / 2
             cost_to_align += movement_cost * ncrabs
         # print(f"to pos {x}: {cost_to_align}")
         min_cost_to_align = min(cost_to_align, min_cost_to_align)
