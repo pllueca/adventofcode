@@ -11,15 +11,15 @@ struct InputLists
     std::vector<int> l2;
 };
 
-void ReadList(const std::string &input_filename, InputLists *lists)
+void ReadList(const std::string &input_filename, InputLists &lists)
 {
     std::ifstream file(input_filename);
     std::string line;
     while (std::getline(file, line))
     {
         auto members = aoc2024::SplitBySpace(line);
-        lists->l1.push_back(std::stoi(members[0]));
-        lists->l2.push_back(std::stoi(members[1]));
+        lists.l1.push_back(std::stoi(members[0]));
+        lists.l2.push_back(std::stoi(members[1]));
     }
 }
 
@@ -89,7 +89,7 @@ void part2(InputLists &input_lists)
 int main(int argc, char *argv[])
 {
     InputLists input_lists;
-    ReadList(input_fname, &input_lists);
+    ReadList(input_fname, input_lists);
     part1(input_lists);
     part2(input_lists);
     return 0;
