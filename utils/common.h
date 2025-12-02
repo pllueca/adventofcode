@@ -16,6 +16,14 @@
     }                                       \
     std::cout << "]\n";
 
+#define RETURNERRORIF(condition, error, message) \
+    if (condition)                               \
+    {                                            \
+        return absl::Status(                     \
+            error,                               \
+            message);                            \
+    }
+
 namespace aoc
 {
     typedef std::vector<int> vecInt;

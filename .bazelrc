@@ -1,0 +1,2 @@
+# Enable C++20 standard
+build --cxxopt="-std=c++20"

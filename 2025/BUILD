@@ -6,7 +6,11 @@ cc_binary(
     name = "day1",
     srcs = ["day1.cc"],
     data = [":inputs"],
-    deps = ["//utils:common"],
+    deps = [
+        "//utils:common",
+        "@abseil-cpp//absl/status",
+        "@abseil-cpp//absl/strings",
+    ],
 )
 
 filegroup(
