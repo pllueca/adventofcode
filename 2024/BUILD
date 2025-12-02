@@ -1,17 +1,20 @@
+load("@rules_cc//cc:cc_binary.bzl", "cc_binary")
+
 # Common utilities library
-cc_library(
-    name = "utils",
-    srcs = ["utils.cc"],
-    hdrs = ["utils.h"],
-    visibility = ["//2024:__subpackages__"],
-)
 
 # Day 1 binary
 cc_binary(
     name = "day1",
     srcs = ["day1.cc"],
-    deps = [":utils"],
     data = [":inputs"],
+    deps = ["//utils:common"],
+)
+
+cc_binary(
+    name = "day2",
+    srcs = ["day2.cc"],
+    data = [":inputs"],
+    deps = ["//utils:common"],
 )
 
 filegroup(
@@ -19,7 +22,9 @@ filegroup(
     srcs = [
         "input1.txt",
         "input1_full.txt",
-    ]
+        "input2.txt",
+        "input2_full.txt",
+    ],
 )
 
 # Add more binaries for additional days below:

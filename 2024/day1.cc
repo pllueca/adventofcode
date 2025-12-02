@@ -1,4 +1,4 @@
-#include "utils.h"
+#include "utils/common.h"
 #include <fstream>
 #include <iostream>
 
@@ -17,7 +17,7 @@ void ReadList(const std::string &input_filename, InputLists &lists)
     std::string line;
     while (std::getline(file, line))
     {
-        auto members = aoc2024::SplitBySpace(line);
+        auto members = aoc::SplitBySpace(line);
         lists.l1.push_back(std::stoi(members[0]));
         lists.l2.push_back(std::stoi(members[1]));
     }
