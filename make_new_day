@@ -8,7 +8,6 @@ touch "$YEAR/input${DAY}.txt"
 touch "$YEAR/input${DAY}_full.txt"
 
 cat >> "$YEAR/BUILD" << EOL
-
 cc_binary(
     name = "day${DAY}",
     srcs = ["day${DAY}.cc"],
@@ -19,5 +18,52 @@ cc_binary(
         "@abseil-cpp//absl/strings",
     ],
 )
+
+EOL
+
+cat >> "$YEAR/day${DAY}.cc" << EOL
+// from https://adventofcode.com/${YEAR}/day/${DAY}
+
+#include <fstream>
+#include <iostream>
+#include <filesystem>
+
+#include "absl/status/status.h"
+#include "absl/strings/numbers.h"
+
+#include "utils/common.h"
+
+using namespace std;
+namespace fs = std::filesystem;
+
+// std::string kInputFilename = "${YEAR}/input${DAY}.txt";
+string kInputFilename = "${YEAR}/input${DAY}_full.txt";
+
+absl::Status ReadInput(const string input_filename) {
+
+    RETURNERRORIF(
+        !fs::exists(input_filename),
+        absl::StatusCode::kNotFound,
+        "input file doesnt exists");
+    ifstream file(input_filename);
+    string line;
+    while (getline(file, line)) {}
+
+}
+void part1() {}
+void part2() {}
+
+int main()
+{
+    auto res = ReadInput(kInputFname);
+    if (!res.ok())
+    {
+        cout << "error reading input: " << res << endl;
+        return 1;
+    }
+    part1();
+    part2();
+    return 0;
+}
 
 EOL
