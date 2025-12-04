@@ -1,0 +1,23 @@
+#!/bin/bash
+
+YEAR=$1
+DAY=$2
+
+touch "$YEAR/day${DAY}.cc"
+touch "$YEAR/input${DAY}.txt"
+touch "$YEAR/input${DAY}_full.txt"
+
+cat >> "$YEAR/BUILD" << EOL
+
+cc_binary(
+    name = "day${DAY}",
+    srcs = ["day${DAY}.cc"],
+    data = [":inputs"],
+    deps = [
+        "//utils:common",
+        "@abseil-cpp//absl/status",
+        "@abseil-cpp//absl/strings",
+    ],
+)
+
+EOL
