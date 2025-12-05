@@ -34,10 +34,11 @@ cat >> "$YEAR/day${DAY}.cc" << EOL
 #include "utils/common.h"
 
 using namespace std;
+using namespace aoc;
 namespace fs = std::filesystem;
 
-// std::string kInputFilename = "${YEAR}/input${DAY}.txt";
-string kInputFilename = "${YEAR}/input${DAY}_full.txt";
+// std::string kInputFname = "${YEAR}/input${DAY}.txt";
+string kInputFname = "${YEAR}/input${DAY}_full.txt";
 
 absl::Status ReadInput(const string input_filename) {
 
@@ -48,8 +49,8 @@ absl::Status ReadInput(const string input_filename) {
     ifstream file(input_filename);
     string line;
     while (getline(file, line)) {}
-
 }
+
 void part1() {}
 void part2() {}
 

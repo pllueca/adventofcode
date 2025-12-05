@@ -38,4 +38,14 @@ cc_binary(
         "@abseil-cpp//absl/strings",
     ],
 )
+cc_binary(
+    name = "day4",
+    srcs = ["day4.cc"],
+    data = [":inputs"],
+    deps = [
+        "//utils:common",
+        "@abseil-cpp//absl/status",
+        "@abseil-cpp//absl/strings",
+    ],
+)
 
