@@ -49,6 +49,7 @@ absl::Status ReadInput(const string input_filename) {
     ifstream file(input_filename);
     string line;
     while (getline(file, line)) {}
+    return absl::OkStatus();
 }
 
 void part1() {}
