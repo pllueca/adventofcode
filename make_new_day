@@ -2,12 +2,17 @@
 
 YEAR=$1
 DAY=$2
+LANGUAGE="${3:-cpp}"
 
-touch "$YEAR/day${DAY}.cc"
+
+
 touch "$YEAR/input${DAY}.txt"
 touch "$YEAR/input${DAY}_full.txt"
 
-cat >> "$YEAR/BUILD" << EOL
+if [ $LANGUAGE == 'cpp' ]; then
+    touch "$YEAR/day${DAY}.cc"
+
+    cat >> "$YEAR/BUILD" << EOL
 cc_binary(
     name = "day${DAY}",
     srcs = ["day${DAY}.cc"],
@@ -21,7 +26,7 @@ cc_binary(
 
 EOL
 
-cat >> "$YEAR/day${DAY}.cc" << EOL
+    cat >> "$YEAR/day${DAY}.cc" << EOL
 // from https://adventofcode.com/${YEAR}/day/${DAY}
 
 #include <fstream>
@@ -69,3 +74,39 @@ int main()
 }
 
 EOL
+
+elif [ $LANGUAGE == 'python' ]; then
+    touch "$YEAR/day${DAY}.py"
+    cat >> "$YEAR/BUILD" << EOL
+py_binary(
+    name = "day${DAY}_py",
+    srcs = ["day${DAY}.py"],
+    data = [":inputs"],
+    deps = [
+    ],
+)
+
+EOL
+    cat >> "$YEAR/day${DAY}.cc" << EOL
+
+INPUT_FNAME = "${YEAR}/input${DAY}.txt"
+# INPUT_FNAME = "${YEAR}/input${DAY}_full.txt"
+
+def read_input(fname): pass
+
+def part1(): pass
+
+def part2(): pass
+
+def main():
+    input_data = read_input(INPUT_FNAME)
+    part1(input_data)
+    part2(input_data)
+
+if __name__ == '__main__':
+    main()
+EOL
+
+else
+  # Commands to execute if none of the above conditions are true
+fi
