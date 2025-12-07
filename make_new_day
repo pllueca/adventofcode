@@ -9,7 +9,7 @@ LANGUAGE="${3:-cpp}"
 touch "$YEAR/input${DAY}.txt"
 touch "$YEAR/input${DAY}_full.txt"
 
-if [ $LANGUAGE == 'cpp' ]; then
+if [[ $LANGUAGE = 'cpp' ]]; then
     touch "$YEAR/day${DAY}.cc"
 
     cat >> "$YEAR/BUILD" << EOL
@@ -75,7 +75,7 @@ int main()
 
 EOL
 
-elif [ $LANGUAGE == 'python' ]; then
+elif [[ $LANGUAGE = 'python' ]]; then
     touch "$YEAR/day${DAY}.py"
     cat >> "$YEAR/BUILD" << EOL
 py_binary(
@@ -106,7 +106,4 @@ def main():
 if __name__ == '__main__':
     main()
 EOL
-
-else
-  # Commands to execute if none of the above conditions are true
-fi
+fi;
