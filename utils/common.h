@@ -14,6 +14,18 @@
     }                                               \
     std::cout << "]\n";
 
+#define PRINT_SET(set)               \
+    std::cout << #set << ": {";      \
+    size_t __i = 0;                  \
+    for (const auto& __elem : set) { \
+        std::cout << __elem;         \
+        if (__i < set.size() - 1) {  \
+            std::cout << ", ";       \
+        }                            \
+        ++__i;                       \
+    }                                \
+    std::cout << "}\n";
+
 #define PRINT_MAT(mat)                                     \
     std::cout << #mat << ": [\n";                          \
     for (size_t __i = 0; __i < mat.size(); ++__i) {        \
