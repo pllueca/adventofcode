@@ -108,12 +108,20 @@ XX6 98X 215 314
 64X
 23X
 314
-->
+-> 270 degree (-90) rotation
 xx4
 431
 623
-
 */
+
+void rotateMatrix90deg(vector<vector<char>>& mat) {}
+
+void rotateMatrix(vector<vector<char>>& mat, int degrees) {
+    for (int rotations = 0; rotations < degrees / 90; rotations++) {
+        rotateMatrix90deg(mat);
+    }
+}
+
 void part2(const Problems& problems) {
     long int total = 0;
 
@@ -132,12 +140,13 @@ void part2(const Problems& problems) {
         vector<string> padded_nums;
         for (int number : current_nums) {
             std::stringstream ss;
-            ss << std::setw(max_lenght) << std::setfill('0') << number;
+            ss << std::setw(max_lenght) << std::setfill('X') << number;
             std::string num_as_str = ss.str();
             padded_nums.push_back(num_as_str);
         }
         cout << "current op: " << problems.ops[i] << endl;
         PRINT_VECTOR(padded_nums);
+        continue;
         // 123
         // 045
         // 006

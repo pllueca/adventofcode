@@ -16,19 +16,6 @@ using namespace std;
 using namespace aoc;
 namespace fs = std::filesystem;
 
-struct Point3d {
-    double x, y, z;
-    Point3d(int x, int y, int z) : x(x), y(y), z(z) {}
-
-    string ToString() { return std::format("({},{},{})", x, y, z); }
-};
-
-double Distance(const Point3d& p, const Point3d& q) {
-    // sqrt of sum of squared deltas
-    return sqrt(pow(q.x - p.x, 2.0) + pow(q.y - p.y, 2.0) +
-                pow(q.z - p.z, 2.0));
-}
-
 // std::string kInputFname = "2025/input8.txt";
 // const int kMaxIterations = 10;
 

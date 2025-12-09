@@ -5,4 +5,7 @@ cc_library(
     srcs = ["common.cc"],
     hdrs = ["common.h"],
     visibility = ["//visibility:public"],
+    deps = [
+        "@abseil-cpp//absl/strings",
+    ]
 )

@@ -93,3 +93,14 @@ cc_binary(
     ],
 )
 
+cc_binary(
+    name = "day9",
+    srcs = ["day9.cc"],
+    data = [":inputs"],
+    deps = [
+        "//utils:common",
+        "@abseil-cpp//absl/status",
+        "@abseil-cpp//absl/strings",
+    ],
+)
+

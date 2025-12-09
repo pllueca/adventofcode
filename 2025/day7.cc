@@ -97,6 +97,7 @@ void part1(const PuzzleInput& input) {
     }
     cout << "part 1: " << num_split << endl;
 }
+
 void part2(const PuzzleInput& input) {}
 
 int main() {
