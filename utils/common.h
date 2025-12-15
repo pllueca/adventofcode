@@ -32,6 +32,20 @@
         std::cout << "}\n";              \
     } while (0)
 
+#define PRINT_MAP(map)                            \
+    do {                                          \
+        std::cout << #map << ": {";               \
+        size_t __i = 0;                           \
+        for (const auto& [__key, __elem] : map) { \
+            std::cout << __key << ": " << __elem; \
+            if (__i < map.size() - 1) {           \
+                std::cout << ", ";                \
+            }                                     \
+            ++__i;                                \
+        }                                         \
+        std::cout << "}\n";                       \
+    } while (0)
+
 #define PRINT_MAT(mat)                                         \
     do {                                                       \
         std::cout << #mat << ": [\n";                          \
