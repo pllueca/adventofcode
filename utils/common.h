@@ -32,22 +32,24 @@
         std::cout << "}\n";              \
     } while (0)
 
-#define PRINT_MAT(mat)                                     \
-    std::cout << #mat << ": [\n";                          \
-    for (size_t __i = 0; __i < mat.size(); ++__i) {        \
-        std::cout << "[";                                  \
-        for (size_t __j = 0; __j < mat[0].size(); ++__j) { \
-            std::cout << mat[__i][__j];                    \
-            if (__j < mat[0].size() - 1) {                 \
-                std::cout << ", ";                         \
-            }                                              \
-        }                                                  \
-        std::cout << "]";                                  \
-        if (__i < mat.size() - 1) {                        \
-            std::cout << ",\n";                            \
-        }                                                  \
-    }                                                      \
-    std::cout << "]\n";
+#define PRINT_MAT(mat)                                         \
+    do {                                                       \
+        std::cout << #mat << ": [\n";                          \
+        for (size_t __i = 0; __i < mat.size(); ++__i) {        \
+            std::cout << "[";                                  \
+            for (size_t __j = 0; __j < mat[0].size(); ++__j) { \
+                std::cout << mat[__i][__j];                    \
+                if (__j < mat[0].size() - 1) {                 \
+                    std::cout << ", ";                         \
+                }                                              \
+            }                                                  \
+            std::cout << "]";                                  \
+            if (__i < mat.size() - 1) {                        \
+                std::cout << ",\n";                            \
+            }                                                  \
+        }                                                      \
+        std::cout << "]\n";                                    \
+    } while (0)
 
 #define RETURNERRORIF(condition, error, message) \
     if (condition) {                             \
@@ -84,6 +86,7 @@ struct Point3d {
 // SplitBySpace("a b") -> ["a", "b"]
 // SplitBySpace("a     b c") -> ["a", "b", "c"]
 std::vector<std::string> SplitBySpace(const std::string& str);
+std::vector<std::string> SplitByComma(const std::string& str);
 
 // euclidean distance
 double Distance(const Point3d& p, const Point3d& q);

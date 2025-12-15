@@ -15,6 +15,16 @@ std::vector<std::string> SplitBySpace(const std::string& str) {
     }
     return tokens;
 }
+std::vector<std::string> SplitByComma(const std::string& str) {
+    std::vector<std::string> tokens;
+    std::istringstream ss(str);
+    std::string word;
+
+    while ((std::getline(ss, word, ','))) {
+        tokens.push_back(word);
+    }
+    return tokens;
+}
 
 double Distance(const Point3d& p, const Point3d& q) {
     // sqrt of sum of squared deltas

@@ -9,3 +9,9 @@ python = use_extension("@rules_python//python/extensions:python.bzl", "python")
 python.toolchain(
     python_version = "3.11",
 )
+
+bazel_dep(
+    name = "rules_go",
+    version = "0.50.1",
+)
+bazel_dep(name = "gazelle", version = "0.37.0") # Use the latest version
