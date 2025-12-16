@@ -126,3 +126,14 @@ cc_binary(
     ],
 )
 
+cc_binary(
+    name = "day12",
+    srcs = ["day12.cc"],
+    data = [":inputs"],
+    deps = [
+        "//utils:common",
+        "@abseil-cpp//absl/status",
+        "@abseil-cpp//absl/strings",
+    ],
+)
+

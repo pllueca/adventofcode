@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-// #include "absl/strings/str_format.h"
+#include "absl/status/status.h"
 
 #define PRINT_VECTOR(vec)                               \
     do {                                                \
@@ -70,6 +70,13 @@
         return absl::Status(error, message);     \
     }
 
+#define STR2INT(str, int_var)                          \
+    {                                                  \
+        RETURNERRORIF(absl::SimpleAtoi(str, &int_var), \
+                      "error parsing as str: " + str,  \
+                      absl::Status::kInvalidArgument); \
+    }
+
 namespace aoc {
 typedef std::vector<int> vecInt;
 typedef std::vector<vecInt> matInt;
@@ -101,6 +108,10 @@ struct Point3d {
 // SplitBySpace("a     b c") -> ["a", "b", "c"]
 std::vector<std::string> SplitBySpace(const std::string& str);
 std::vector<std::string> SplitByComma(const std::string& str);
+absl::Status SeparateNumbersBySpace(const std::string& str, vecInt& res);
+
+// return true if all the elements in the vector are 0.
+bool AllZeros(const vecInt& v);
 
 // euclidean distance
 double Distance(const Point3d& p, const Point3d& q);
